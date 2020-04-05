@@ -45,9 +45,7 @@ public class AmigoDAO {
 			for (int i = 1; i <= cantidad_paises; i++) {
 				paises.add(propiedades.getProperty("agenda.pais" + i));
 			}
-			for (int i = 0; i < paises.size(); i++) {
-				System.out.println(paises.get(i));
-			}
+			
 
 			int cantidad_amigos = Integer.parseInt(propiedades.getProperty("amigo.cantidad"));
 			System.out.println(cantidad_amigos);
@@ -59,9 +57,7 @@ public class AmigoDAO {
 				Cercano aux = new Cercano(n, p, t, c);
 				amigos.add(aux);
 			}
-			for (int i = 0; i < amigos.size(); i++) {
-				System.out.println(amigos.get(i));
-			}
+			
 
 			int cantidad_trabajo = Integer.parseInt(propiedades.getProperty("contacto.cantidad"));
 			System.out.println(cantidad_trabajo);
@@ -74,9 +70,7 @@ public class AmigoDAO {
 				Trabajo aux = new Trabajo(n, e, p, t, c);
 				trabajo.add(aux);
 			}
-			for (int i = 0; i < trabajo.size(); i++) {
-				System.out.println(trabajo.get(i));
-			}
+			
 
 			archiv.escribirArchivo(paises, amigos, trabajo);
 
