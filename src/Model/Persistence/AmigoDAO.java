@@ -41,14 +41,14 @@ public class AmigoDAO {
 			archivo.close();
 
 			int cantidad_paises = Integer.parseInt(propiedades.getProperty("agenda.paises"));
-			System.out.println(cantidad_paises);
+			
 			for (int i = 1; i <= cantidad_paises; i++) {
 				paises.add(propiedades.getProperty("agenda.pais" + i));
 			}
 			
 
 			int cantidad_amigos = Integer.parseInt(propiedades.getProperty("amigo.cantidad"));
-			System.out.println(cantidad_amigos);
+			
 			for (int i = 1; i <= cantidad_amigos; i++) {
 				String n = propiedades.getProperty("amigo.nombre" + i);
 				String p = propiedades.getProperty("amigo.pais" + i);
@@ -60,7 +60,7 @@ public class AmigoDAO {
 			
 
 			int cantidad_trabajo = Integer.parseInt(propiedades.getProperty("contacto.cantidad"));
-			System.out.println(cantidad_trabajo);
+			
 			for (int i = 1; i <= cantidad_trabajo; i++) {
 				String n = propiedades.getProperty("contacto.nombre" + i);
 				String e = propiedades.getProperty("contacto.empresa" + i);
