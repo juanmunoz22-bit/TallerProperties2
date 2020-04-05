@@ -30,16 +30,60 @@ public class Controlador implements ActionListener {
 		ventana.panel_inicial.boton_amigos.addActionListener(escuchador);
 		ventana.panel_inicial.boton_trabajo.addActionListener(escuchador);
 		ventana.panel_trabajo.boton_registrar.addActionListener(escuchador);
+
 		ventana.boton_regresar.addActionListener(escuchador);
 		ventana.panel_correoc.boton_añadir.addActionListener(escuchador);
 		ventana.panel_correot.boton_añadir1.addActionListener(escuchador);
 		ventana.panel_correoc.boton_eliminar.addActionListener(escuchador);
 		ventana.panel_correot.boton_eliminar.addActionListener(escuchador);
+		ventana.panel_correoc.boton_modificar.addActionListener(escuchador);
+		ventana.panel_correot.boton_modificar.addActionListener(escuchador);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		if(ventana.panel_correoc.boton_modificar== e.getSource()) {
+			
+			String correo=ventana.panel_correoc.campo_correo.getText();
+			Cercano aux = amigo.buscarContactoCercano(correo,cercano);
+			if (ventana.panel_correoc.campo_correo.getText().contentEquals("")) {
+				ventana.mostrarMensajes("DEBE DIGITAR UN CORREO");	
+			} else if(aux==null) {
+				ventana.mostrarMensajes("EL CONTACTO NO EXISTE");
+			}else {
+				cercano.remove(aux);
+				ventana.panel.setVisible(true);
+				ventana.panel_correoc.setVisible(false);
+				ventana.panel.campo_nombre.setText("");
+				ventana.panel.campo_pais.setText("");
+				ventana.panel.campo_telefono.setText("");
+				ventana.panel.campo_correo.setText("");	
+			}
+		}
+		if(ventana.panel_correot.boton_modificar== e.getSource()) {
+			
+			String correo=ventana.panel_correot.campo_correot.getText();
+			Trabajo aux = amigo.buscarContactoTrabajo(correo,trabajo);
+			if (ventana.panel_correot.campo_correot.getText().contentEquals("")) {
+				ventana.mostrarMensajes("DEBE DIGITAR UN CORREO");	
+			} else if(aux==null) {
+				ventana.mostrarMensajes("EL CONTACTO NO EXISTE");
+			}else {
+				trabajo.remove(aux);
+				ventana.panel_trabajo.setVisible(true);
+				ventana.panel_correot.setVisible(false);
+				ventana.panel_trabajo.campo_correo.setText("");
+				ventana.panel_trabajo.campo_empresa .setText("");
+				ventana.panel_trabajo.campo_nombre .setText("");
+				ventana.panel_trabajo.campo_pais .setText("");	
+				ventana.panel_trabajo.campo_telefono.setText("");	
+				
+			}
+			
+		}
+		
+		
 		if (ventana.panel_inicial.boton_amigos == e.getSource()) {
 			ventana.panel_inicial.setVisible(false);
 			ventana.panel_correoc.setVisible(true);
@@ -50,6 +94,7 @@ public class Controlador implements ActionListener {
 			ventana.panel.setVisible(true);
 		}
 		if (ventana.getPanel().getBoton_registrar() == e.getSource()) {
+			
 			if (amigo.agregarContactoCercano(ventana.panel.campo_nombre.getText(), ventana.panel.campo_pais.getText(),
 					ventana.panel.campo_telefono.getText(), ventana.panel.campo_correo.getText(), cercano)) {
 				ventana.mostrarMensajes("Contacto añadido");

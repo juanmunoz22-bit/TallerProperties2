@@ -54,7 +54,9 @@ public class Archivo {
 	public void escribirArchivoCercano(ArrayList<Cercano> amigos) {
 		try {
 			salida = new ObjectOutputStream(new FileOutputStream(archivo));
+			
 			salida.writeObject(amigos);
+			
 			salida.close();
 		} catch (IOException e) {
 			e.printStackTrace();

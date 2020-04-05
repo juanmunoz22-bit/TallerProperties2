@@ -116,6 +116,7 @@ public class AmigoDAO {
 		if (buscarContactoCercano(correo, cercano) == null) {
 			cercano.add(aux);
 			archiv.escribirArchivoCercano(cercano);
+			
 			return true;
 		} else {
 			return false;
@@ -170,31 +171,7 @@ public class AmigoDAO {
 	}
 	
 	
-	public String modificarAmigo(int pos, String n1, String n2, String a1, String a2) {
-		String mensaje="";
-		if(n1.isEmpty() && n2.isEmpty() && a1.isEmpty() && a2.isEmpty()) {
-			mensaje="Para guardar debe sobreescribir al menos un campo";
-		}
-		else {
-			if (!n1.isEmpty()) {
-				//.get(pos).setNombre1(n1);
-				mensaje="Se han hecho los cambios en el primer nombre";
-			}
-			if(!n2.isEmpty()) {
-				//arraypersonas.get(pos).setNombre2(n2);
-				mensaje="Se han hecho los cambios en el segundo nombre";
-			}
-			if(!a1.isEmpty()) {
-				//arraypersonas.get(pos).setApellido1(a1);
-				mensaje="Se han hecho los cambios en el primer apellido";
-			}
-			if(!a2.isEmpty()) {
-				//arraypersonas.get(pos).setApellido2(a2);
-				mensaje="Se han hecho los cambios en el segundo apellido";
-			}
-		}
-		return mensaje;
-	}
+	
 
 	
 	
